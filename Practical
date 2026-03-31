@@ -1,1 +1,14 @@
+feature : user purchases airtime
+As a customer 
+I want to purchase a airtime Bundle
+with the network provider of Vodacom 
+So i can make phone calls
+
+
+Scenario : Automate a successful Vodacom Bundle purchase on the Sell Product page.
+Given the user is on the phone 
+When the user enters "Product Type" as "Bundle" and "Provider" as "Vodacom"
+And the user clicks the Process Sale button
+Then the user should be redirected to the dashboard 
+And a "Sale Processed Successfully!" should be displayed
 
