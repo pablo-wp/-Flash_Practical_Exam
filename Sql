@@ -1,1 +1,36 @@
+-- Practical schema for exam transaction integrity task.
 
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'PracticalDB')
+BEGIN
+    CREATE DATABASE PracticalDB;
+END
+GO
+
+USE PracticalDB;
+GO
+
+IF OBJECT_ID('dbo.Transactions', 'U') IS NOT NULL
+BEGIN
+    DROP TABLE dbo.Transactions;
+END
+GO
+
+CREATE TABLE dbo.Transactions (
+    TransactionId INT IDENTITY(1,1) PRIMARY KEY,
+    MSISDN NVARCHAR(20) NOT NULL,
+    Amount DECIMAL(10,2) NOT NULL,
+    Network NVARCHAR(50) NOT NULL,
+    [Status] NVARCHAR(20) NOT NULL DEFAULT 'PENDING',
+    CreatedAt DATETIME2 NOT NULL DEFAULT SYSDATETIME()
+);
+GO
+
+CREATE INDEX IX_Transactions_MSISDN ON dbo.Transactions (MSISDN);
+GO
+
+select * from Transactions
+
+update dbo.Transactions
+set [Status] = 'SUCCESSFUL'
+where TransactionId = 2
+ 
