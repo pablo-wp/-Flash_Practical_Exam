@@ -1,1 +1,11 @@
+import {test,expect} from '@playwright/test';
+test ('Payment', async ({page})=>{
+await page.goto ('https://quality-engineering-labs.vercel.app/');
+await page.fill ('input-phone' , '0721234567')
+await page.getByLabel('Bundle')
+
+ await page.getByRole('button', { name: 'Process Sale' })
+
+}
+)
 
